@@ -24,13 +24,13 @@ class ghost_clock extends WP_Widget {
             $todayColor = esc_attr($instance['todayColor']);
             $timeColor = esc_attr($instance['timeColor']);
             $dateColor = esc_attr($instance['dateColor']);
-            $display = esc_attr($instance['display']);
+            $displayToday = esc_attr($instance['displayToday']);
         } else {
             $title = '';
             $todayColor = '';
             $timeColor = '';
             $dateColor = '';
-            $display = '';
+            $displayToday = '';
         }
     ?>
         <p>
@@ -50,8 +50,8 @@ class ghost_clock extends WP_Widget {
             <input id="<?php echo $this->get_field_id('dateColor'); ?>" name="<?php echo $this->get_field_name('dateColor'); ?>" type="color" value="<?php echo $dateColor; ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('display'); ?>"><?php _e('Display Today', 'wp_widget_plugin'); ?></label><br>
-                <select id="<?php echo $this->get_field_id('display'); ?>" name="<?php echo $this->get_field_name('display'); ?>">
+            <label for="<?php echo $this->get_field_id('displayToday'); ?>"><?php _e('Date Font Color', 'wp_widget_plugin'); ?></label><br>
+                <select id="<?php echo $this->get_field_id('displayToday'); ?>" name="<?php echo $this->get_field_name('displayToday'); ?>">
                     <option value="block">True</option>
                     <option value="none">False</option>
                 </select>
@@ -67,7 +67,7 @@ class ghost_clock extends WP_Widget {
         $instance['todayColor'] = strip_tags($new_instance['todayColor']);
         $instance['timeColor'] = strip_tags($new_instance['timeColor']);
         $instance['dateColor'] = strip_tags($new_instance['dateColor']);
-        $instance['display'] = strip_tags($new_instance['display']);
+        $instance['displayToday'] = strip_tags($new_instance['displayToday']);
         return $instance;
     }
 
@@ -82,7 +82,7 @@ class ghost_clock extends WP_Widget {
         $todayColor = $instance['todayColor'];
         $timeColor = $instance['timeColor'];
         $dateColor = $instance['dateColor'];
-        $display = $instance['display'];
+        $displayToday = $instance['displayToday'];
         echo $before_widget;
         // Display Widget
         echo '<div class="widget-text wp_widget_plugin_box">';
@@ -93,7 +93,7 @@ class ghost_clock extends WP_Widget {
         }
 
         echo '
-            <h2 style="display:'.$display.'; color:'.$todayColor.'">Today</h2>
+            <h2 style="display:'.$displayToday.'; color:'.$todayColor.'">Today</h2>
             <p id="time" style="color:'.$timeColor.'"></p>
             <p id="date" style="color:'.$dateColor.'"></p>';
 
