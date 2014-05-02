@@ -49,8 +49,8 @@ class ghost_clock extends WP_Widget {
 
     // Widget Display
     function widget($args, $instance) {
-        wp_enqueue_style( 'ghost-style', plugins_url('ghost-clock-widget/ghost.css') );
-        wp_enqueue_script( 'ghost-script', plugins_url('ghost-clock-widget/ghost.js') );
+        wp_enqueue_style( 'ghost-style', plugins_url('ghost-date-time-wp-widget/ghost-date-time-wp-widget.min.css') );
+        wp_enqueue_script( 'ghost-script', plugins_url('ghost-date-time-wp-widget/ghost-date-time-wp-widget.min.js') );
 
         extract( $args );
         //Widget Option
