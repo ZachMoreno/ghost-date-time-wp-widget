@@ -21,11 +21,15 @@ class ghost_clock extends WP_Widget {
         //Check Values
         if( $instance) {
             $title = esc_attr($instance['title']);
-            $color = esc_attr($instance['color']);
+            $todayColor = esc_attr($instance['todayColor']);
+            $timeColor = esc_attr($instance['timeColor']);
+            $dateColor = esc_attr($instance['dateColor']);
             $display = esc_attr($instance['display']);
         } else {
             $title = '';
-            $color = '';
+            $todayColor = '';
+            $timeColor = '';
+            $dateColor = '';
             $display = '';
         }
     ?>
@@ -34,8 +38,16 @@ class ghost_clock extends WP_Widget {
             <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" placeholder="Title Optional" value="<?php echo $title; ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id('color'); ?>"><?php _e('Font Color', 'wp_widget_plugin'); ?></label><br>
-            <input id="<?php echo $this->get_field_id('color'); ?>" name="<?php echo $this->get_field_name('color'); ?>" type="color" value="<?php echo $color; ?>" />
+            <label for="<?php echo $this->get_field_id('todayColor'); ?>"><?php _e('Today Font Color', 'wp_widget_plugin'); ?></label><br>
+            <input id="<?php echo $this->get_field_id('todayColor'); ?>" name="<?php echo $this->get_field_name('todayColor'); ?>" type="color" value="<?php echo $todayColor; ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('timeColor'); ?>"><?php _e('Time Font Color', 'wp_widget_plugin'); ?></label><br>
+            <input id="<?php echo $this->get_field_id('timeColor'); ?>" name="<?php echo $this->get_field_name('timeColor'); ?>" type="color" value="<?php echo $color; ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('dateColor'); ?>"><?php _e('Date Font Color', 'wp_widget_plugin'); ?></label><br>
+            <input id="<?php echo $this->get_field_id('dateColor'); ?>" name="<?php echo $this->get_field_name('dateColor'); ?>" type="color" value="<?php echo $dateColor; ?>" />
         </p>
         <p>
             <label for="<?php echo $this->get_field_id('display'); ?>"><?php _e('Display Today', 'wp_widget_plugin'); ?></label><br>
@@ -52,7 +64,9 @@ class ghost_clock extends WP_Widget {
         $instance = $old_instance;
         //Fields
         $instance['title'] = strip_tags($new_instance['title']);
-        $instance['color'] = strip_tags($new_instance['color']);
+        $instance['todayColor'] = strip_tags($new_instance['todayColor']);
+        $instance['timeColor'] = strip_tags($new_instance['timeColor']);
+        $instance['dateColor'] = strip_tags($new_instance['dateColor']);
         $instance['display'] = strip_tags($new_instance['display']);
         return $instance;
     }
@@ -65,7 +79,9 @@ class ghost_clock extends WP_Widget {
         extract( $args );
         //Widget Option
         $title = apply_filters('widget_title', $instance['title']);
-        $color = $instance['color'];
+        $todayColor = $instance['todayColor'];
+        $timeColor = $instance['timeColor'];
+        $dateColor = $instance['dateColor'];
         $display = $instance['display'];
         echo $before_widget;
         // Display Widget
@@ -77,9 +93,9 @@ class ghost_clock extends WP_Widget {
         }
 
         echo '
-            <h2 style="display:'.$display.'">Today</h2>
-            <p id="time" style="color:'.$color.'"></p>
-            <p id="date" style="color:'.$color.'"></p>';
+            <h2 style="display:'.$display.'; color:'.$todayColor.'">Today</h2>
+            <p id="time" style="color:'.$timeColor.'"></p>
+            <p id="date" style="color:'.$dateColor.'"></p>';
 
         echo '</div>';
         echo $after_widget;
