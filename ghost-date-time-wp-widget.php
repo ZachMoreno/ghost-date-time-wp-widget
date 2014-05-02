@@ -26,7 +26,7 @@ class ghost_clock extends WP_Widget {
         } else {
             $title = '';
             $color = '';
-            $display = 'block';
+            $display = '';
         }
     ?>
         <p>
