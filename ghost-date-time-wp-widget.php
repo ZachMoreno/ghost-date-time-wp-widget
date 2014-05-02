@@ -21,13 +21,19 @@ class ghost_clock extends WP_Widget {
         //Check Values
         if( $instance) {
             $title = esc_attr($instance['title']);
+            $color = esc_attr($instance['color']);
         } else {
             $title = '';
+            $color = '';
         }
     ?>
         <p>
             <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Widget Title', 'wp_widget_plugin'); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" placeholder="Title Optional" value="<?php echo $title; ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('color'); ?>"><?php _e('Font Color', 'wp_widget_plugin'); ?></label><br>
+            <input id="<?php echo $this->get_field_id('color'); ?>" name="<?php echo $this->get_field_name('color'); ?>" type="color" value="<?php echo $color; ?>" />
         </p>
     <?php
     }
@@ -37,6 +43,7 @@ class ghost_clock extends WP_Widget {
         $instance = $old_instance;
         //Fields
         $instance['title'] = strip_tags($new_instance['title']);
+        $instance['color'] = strip_tags($new_instance['color']);
         return $instance;
     }
 
@@ -48,6 +55,7 @@ class ghost_clock extends WP_Widget {
         extract( $args );
         //Widget Option
         $title = apply_filters('widget_title', $instance['title']);
+        $color = $instance['color'];
         echo $before_widget;
         // Display Widget
         echo '<div class="widget-text wp_widget_plugin_box">';
@@ -59,8 +67,8 @@ class ghost_clock extends WP_Widget {
 
         echo '
             <h2>Today</h2>
-            <p id="time"></p>
-            <p id="date"></p>';
+            <p id="time" style="color:'.$color.'"></p>
+            <p id="date" style="color:'.$color.'"></p>';
 
         echo '</div>';
         echo $after_widget;
@@ -69,29 +77,4 @@ class ghost_clock extends WP_Widget {
 
 // register widget
 add_action('widgets_init', create_function('', 'return register_widget("ghost_clock");'));
-
-
-
-
-
-
-
-
-// class ghost_clock extends WP_Widget {
-//     function __construct() {
-//         parent::__construct(false, $name = __('Ghost Clock'));
-//     }
-//     function form() {
-        
-//     }
-//     function update() {
-
-//     }
-//     function widget($args, $instance) {
-
-//     }
-// }
-
-// add_action('widgets_init', create_function('', 'return register_widget("ghost_clock");')
-// );
 ?>
