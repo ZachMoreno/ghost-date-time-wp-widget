@@ -43,7 +43,7 @@ class ghost_clock extends WP_Widget {
         </p>
         <p>
             <label for="<?php echo $this->get_field_id('timeColor'); ?>"><?php _e('Time Font Color', 'wp_widget_plugin'); ?></label><br>
-            <input id="<?php echo $this->get_field_id('timeColor'); ?>" name="<?php echo $this->get_field_name('timeColor'); ?>" type="color" value="<?php echo $color; ?>" />
+            <input id="<?php echo $this->get_field_id('timeColor'); ?>" name="<?php echo $this->get_field_name('timeColor'); ?>" type="color" value="<?php echo $timeColor; ?>" />
         </p>
         <p>
             <label for="<?php echo $this->get_field_id('dateColor'); ?>"><?php _e('Date Font Color', 'wp_widget_plugin'); ?></label><br>
