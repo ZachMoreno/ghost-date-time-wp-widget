@@ -1,4 +1,3 @@
-ghost-dashboard-clock-widget
+Ghost Date Time WordPress Widget
 ============================
-
-Ghost Dashboard Clock Widget for WordPress
+By: @XachMoreno & @AlexWhedbee
